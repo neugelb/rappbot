@@ -5,13 +5,25 @@
 - [Appbot](https://appbot.co/)
 - [Appbot API](https://app.appbot.co/api)
 
+# Package Installation
+
+To install this package, we recommend using the [devtools](https://github.com/r-lib/devtools) package.
+
+```
+install.packages('devtools')
+
+library(devtools)
+
+install_github('neugelb/rappbot')
+```
+
 # Authentication
 
 To authenticate, you need to create an API key in the console. Then you authenticate like this:
 
 `appbot_auth(user,password)`
 
-This will save the authentication credentials to your environment.
+This will save the authentication credentials to your environment. Obviously you need to be a paying customer with API access to do this!
 
 # Sources
 
