@@ -1,0 +1,18 @@
+Package: rappbot
+Type: Package
+Title: Wrapper for the Appbot API
+Version: 0.3.0
+Author: Randall Helms
+Maintainer: Randall Helms <randall@neugelb.com>
+Description: Functions for interacting with the Appbot API and pulling tidy-formatted dataframes into R
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
+Imports:
+  tidyverse,
+  lubridate,
+  purrr,
+  httr,
+  jsonlite,
+  keyring
