@@ -23,7 +23,7 @@ To authenticate, you need to create an API key in the console. Then you authenti
 
 `appbot_auth(user,password)`
 
-This will save the authentication credentials to your environment. Obviously you need to be a paying customer with API access to do this!
+This will save the authentication credentials to your environment using the [keyring](https://github.com/r-lib/keyring) package. Obviously you need to be a paying customer with API access to do this!
 
 # Sources
 
@@ -73,7 +73,7 @@ droid_reviews <- appbot_reviews(droid_id,5,s,e)
 
 An additional option would be to pivot the topics column (which is returned as a list column) out into individual columns each, like this:
 
-`droid_reviews_pivoted <- appot_reviews(droid_id,pivoted=TRUE)`
+`droid_reviews_pivoted <- appbot_reviews(droid_id,pivoted=TRUE)`
 
 # Other tools:
 
