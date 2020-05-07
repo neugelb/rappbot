@@ -110,6 +110,18 @@ reviews_clean <- function(object) {
 
   results2 <- lapply(results,nullToNA)
 
+  #deal with empty topics lists 
+
+  for (i in 1:length(results2)) {
+
+  if (is_empty(results2[[i]]$topics) == TRUE) {
+
+    results2[[i]]$topics <- NA
+
+  }
+
+}
+
   results3 <- map(results2,as_tibble)
 
   results4 <- do.call('bind_rows',results3)

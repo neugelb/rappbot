@@ -4,36 +4,22 @@
 \alias{appbot_reviews_import}
 \title{appbot_reviews_import}
 \usage{
-appbot_reviews_import(
-  app_id,
-  store_id,
-  author = NULL,
-  rating = NULL,
-  body = NULL,
-  subject = NULL,
-  version = NULL,
-  country_code = NULL,
-  published_at = NULL
-)
+appbot_reviews_import(app_id, reviews_df)
 }
 \arguments{
 \item{app_id}{The ID of the app you want to check}
 
-\item{store_id}{The ID of the app store you are importing to}
-
-\item{author}{The review author}
-
-\item{rating}{The review rating}
-
-\item{body}{The review text body}
-
-\item{subject}{The review subject}
-
-\item{version}{The app version (iOS only)}
-
-\item{country_code}{The country code (see appbot_countries for codes)}
-
-\item{published_at}{The review publishing date - if not specified, uses the current date time}
+\item{reviews_df}{A data frame of reviews that you want to import - must contain the following columns:
+\itemize{
+  \item store_id The app store ID - you can get this from \code{\link{appbot_reviews}}
+  \item author The review author
+  \item rating The review rating
+  \item body The review text body
+  \item subject The review subject
+  \item published_at The review publishing date
+  \item version The app version (iOS only)
+  \item country_code The country code (see appbot_countries for codes)
+}}
 }
 \description{
 Allows you to call different Appbot API endpoints related to sentiments
