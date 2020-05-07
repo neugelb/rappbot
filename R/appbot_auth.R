@@ -3,15 +3,24 @@
 #' Save your API credentials to your environment
 #' @param user The API user key
 #' @param secret The API secret key
+#' @param clear Clear your existing API key so that you can re-enter the user and secret values
 #' @export
 
-appbot_auth <- function(user,secret) {
+appbot_auth <- function(user,secret,clear=FALSE) {
 
-    require(keyring)
+  require(keyring)
 
-    key_set_with_value('appbot_api',username=user,password=secret)
+  if (clear == TRUE) {
+
+    key_delete('appbot_api')
+    print('Appbot API key deleted')
 
   }
+
+  key_set_with_value('appbot_api',username=user,password=secret)
+  print('Appbot API key set')
+
+}
 
 appbot_auth_check <- function() {
 
@@ -30,5 +39,5 @@ appbot_auth_check <- function() {
   auth_list$secret <- key_get('appbot_api')
 
   return(auth_list)
-  
+
 }

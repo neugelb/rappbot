@@ -4,12 +4,14 @@
 \alias{appbot_auth}
 \title{appbot_auth}
 \usage{
-appbot_auth(user, secret)
+appbot_auth(user, secret, clear = FALSE)
 }
 \arguments{
 \item{user}{The API user key}
 
 \item{secret}{The API secret key}
+
+\item{clear}{Clear your existing API key so that you can re-enter the user and secret values}
 }
 \description{
 Save your API credentials to your environment
