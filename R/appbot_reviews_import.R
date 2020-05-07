@@ -4,6 +4,7 @@
 #' @param app_id The ID of the app you want to check
 #' @param reviews_df A data frame of reviews that you want to import - must contain the following columns:
 #' \itemize{
+#'   \item id A unique identifier for each review
 #'   \item store_id The app store ID - you can get this from \code{\link{appbot_reviews}}
 #'   \item author The review author
 #'   \item rating The review rating
@@ -28,7 +29,7 @@ appbot_reviews_import <- function(app_id,reviews_df) {
 
 #check for expected columns
 
-  expected_columns <- c("store_id", "author", "rating", "body", "subject", "country_code",
+  expected_columns <- c("id","store_id", "author", "rating", "body", "subject", "country_code",
 "version", "published_at")
 
 expected_check <- expected_columns %in% names(reviews_df)
@@ -58,6 +59,7 @@ if (nrow(reviews_df) > 100) {
 
     xlist <- list(
       store_id = x$store_id,
+      id = x$id,
       author = x$author,
       rating = x$rating,
       body = x$body,

@@ -11,6 +11,7 @@ appbot_reviews_import(app_id, reviews_df)
 
 \item{reviews_df}{A data frame of reviews that you want to import - must contain the following columns:
 \itemize{
+  \item id A unique identifier for each review
   \item store_id The app store ID - you can get this from \code{\link{appbot_reviews}}
   \item author The review author
   \item rating The review rating
