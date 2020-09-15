@@ -106,29 +106,15 @@ reviews_clean <- function(object) {
   require(purrr)
   require(tidyverse)
 
-  results <- object$results
+  results <- map(object$results,compact)
 
-  results2 <- lapply(results,nullToNA)
+  #deal with empty topics lists
 
-  #deal with empty topics lists 
-
-  for (i in 1:length(results2)) {
-
-  if (is_empty(results2[[i]]$topics) == TRUE) {
-
-    results2[[i]]$topics <- NA
-
-  }
-
-}
-
-  results3 <- map(results2,as_tibble)
-
-  results4 <- do.call('bind_rows',results3)
+  results <- do.call('bind_rows',map(results,as_tibble))
 
   reviews <- tibble()
 
-  ids <- results4 %>%
+  ids <- results %>%
     distinct(id) %>%
     pull(id)
 
@@ -136,8 +122,10 @@ reviews_clean <- function(object) {
 
     idfilt <- ids[[i]]
 
-    df2 <- results4 %>%
-      filter(id == idfilt) %>%
+    df2 <- results %>%
+      filter(id == idfilt)
+
+    df2 <- as_tibble(map(df2,nullToNA)) %>%
       unnest(topics)
 
     t1 <- df2 %>%
@@ -150,7 +138,7 @@ reviews_clean <- function(object) {
 
     reviews <- bind_rows(reviews,df3)
 
-    }
+  }
 
   return(reviews)
 
