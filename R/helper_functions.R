@@ -25,7 +25,17 @@ remove_na_cols <- function(df) {
 
 ifnullNA <- function(x) {
 
+  require(lubridate)
+
+  if (is.Date(x) == FALSE) {
+
   z <- ifelse(is.null(x),NA,x)
+
+} else {
+
+  z <- ifelse(is.null(x),NA,as.character(x))
+
+  }
 
   return(z)
 
